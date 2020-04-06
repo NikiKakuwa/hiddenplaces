@@ -18,7 +18,7 @@ Hidden Placesは「ちょっと気になる場所」を共有するためのプ�
 ### 主な利用シーン
 街中を歩いていて「ちょっと気になる場所」を見つけたとき  
 
-## 設計書https://drive.google.com/file/d/1_teQQ9DoNdQV1TIHEWPEiDMRocEtLuar/view?usp=sharing
+## 設計書
 [ER図](https://drive.google.com/file/d/1cAzCP7iFitrO5zs94KPoAAv97yhw5ULA/view?usp=sharing)  
 [詳細設計](https://drive.google.com/file/d/1_teQQ9DoNdQV1TIHEWPEiDMRocEtLuar/view?usp=sharing)
 
