@@ -2,10 +2,8 @@ class UsersController < ApplicationController
 
   def top
   end
-  
-  def about
-  end
 
+  def about
   end
 
   def index
@@ -16,4 +14,5 @@ class UsersController < ApplicationController
 
   def edit
   end
+
 end
