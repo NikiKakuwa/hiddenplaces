@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      # flash [:success] = "新規投稿に成功しました！"
+      # flash [:success] = "新規投稿しました！"
       redirect_to post_path(@post)
     else
       render action: :new
@@ -24,6 +24,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
     @new_post = Post.new
+    @comment = Comment.new
   end
 
   def edit
@@ -36,11 +37,18 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-       #flash[:success] = '編集に成功しました!'
+       #flash[:success] = '編集しました!'
        redirect_to post_path(@post)
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
+    #flash[:success] = '投稿を削除しました！'
   end
 
   private

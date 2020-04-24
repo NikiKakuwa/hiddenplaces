@@ -19,7 +19,7 @@
     <%= f.text_area :body %>
 
     <h4>写真</h4>
-    <%= attachment_image_tag @post, :post_image, :fill, fallback: "no_image.jpg", size:'150x150' %>
+    <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", size:'150x150' %>
     <%= f.attachment_field :post_image %>
 
     <%= f.submit '投稿' %>

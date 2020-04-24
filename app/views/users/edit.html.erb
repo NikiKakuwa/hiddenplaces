@@ -1,2 +1,32 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>User info</h2>
+<%= form_for(@user) do |f| %>
+<% if @user.errors.any? %>
+    <h3>
+    <% @user.errors.count %>errors prohibited this book from being saved:
+    </h3>
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    </ul>
+    <% end %>
+    <div class="form-group has-icon">
+        <div class="field">
+        Name
+        <%= f.text_field :name, autofocus: true %>
+        </div>
+        <div class="field">
+        Image
+        <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size:'150x150' %>
+        <label class="control-label sr-only" for="inputEmail">
+        ProfileImage
+        <%= f.attachment_field :user_image %>
+        </div>
+        <div class="field">
+        Introduction
+        <%= f.text_area :introduction %>
+        </div>
+    </div>
+    <%= f.submit "新規登録" %>
+<% end %>
