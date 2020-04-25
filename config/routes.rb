@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create, :destroy]
   end
   get 'users/about' => "users#about"
+  get 'posts/new' => "posts#new"
   root 'users#top'
 end
