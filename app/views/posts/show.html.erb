@@ -2,33 +2,26 @@
 <div class="container">
 <div class="row">
 
- <div class="col-sx-3">
+    <div class="col-xs-3">
+    <%= render 'users/profile', user: current_user %>
+    </div>
+<div class="col-xs-6">
 
-
-<table class="table table-hover table-inverse">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><%= link_to user_path(@post.user.id) do %>
-                <%= attachment_image_tag @post.user, :user_image, fallback: "no_image.jpg", size:'40x40' %>
-                <% end %>
-                <%= link_to @post.user.name, user_path(@post.user) %>
-            </td>
-            <td>
-            <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", size:'150x150' %>
-            <%= link_to @post.title, post_path(@post) %>
-            <%= @post.body %>
-            <% if @post.user_id == current_user.id %>
-            <%= link_to "Edit", edit_post_path(@post) ,class: "btn-sm btn-success" %>
-            <%= link_to "Destroy", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-sm btn-danger"%>
+    <div class="post">
+            <%= link_to user_path(@post.user.id) do %>
+            <%= attachment_image_tag @post.user, :user_image, fallback: "no_image.jpg", size:'50x50' %>
             <% end %>
-            </td>
-            <td>
+            <%= link_to @post.user.name, user_path(@post.user) %>
+            <div>
+            <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
+            </div>
+            <br>
+            <h3><%= link_to @post.title, post_path(@post) %></h3><br>
+            <%= @post.body %><br><br>
+            <% if @post.user_id == current_user.id %>
+            <%= link_to "編集", edit_post_path(@post), class: "btn-sm btn-success" %>
+            <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' },class: "btn-sm btn-danger" %>
+            <% end %>
             <%# <% if @post.favorited_by?(current_user) %>
                 <%# <%= link_to book_favorites_path(@post), method: :delete do %>
                 <%# <i class="fa fas-heart" aria-hidden="true" style="color: red;"></i> %>
@@ -41,53 +34,47 @@
                 <%# <% end %>
             <%# <% end %>
              <%# <h6><%= @post.favorites.count %>
-            <%# </td> %>
-        </tr>
-    </tbody>
-</table>
 
-<hr>
-
-<table class="table table-hover table-inverse">
-    <thead>
-        <tr>
-            <th>user</th>
-            <th>date</th>
-            <th>comment</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <% @post.comments.each do |comment| %>
-            <td>
-            <%= attachment_image_tag @post.user, :user_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %><br>
-            <%= comment.user.name %>
-            </td>
-            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= comment.comment %></td>
-            <td>
-            <% if current_user.id == comment.user_id %>
-            <%= link_to "Delete", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-sm btn-danger"%>
+            <br><br>
+            <div class="comment">
+            <% @post.comments.each do |comment| %>
+                <div class="comment-mini">
+                    <table><tr></tr><tr></tr>
+                    <td>
+                    <%= attachment_image_tag @post.user, :user_image, fallback: "no_image.jpg", size:'30x30' %><br>
+                    <%= comment.user.name %>
+                    </td>
+                    <td>
+                    <%= comment.comment %>
+                    <% if current_user.id == comment.user_id %>
+                    <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-sm btn-danger"%>
+                    <% end %>
+                    </td>
+                    </table>
+                </div>
             <% end %>
-            </td>
-        <% end %>
-        </tr>
-    </tbody>
-</table>
+            </div>
+            <br>
 
-<%= form_for [@post, @comment] do |f| %>
-<% if @comment.errors.any? %>
-    <h3>
-    <% @comment.errors.count %>errors prohibited this post from being saved:
-    </h3>
+            <%= form_for [@post, @comment] do |f| %>
+            <% if @comment.errors.any? %>
+            <h3>
+            <% @comment.errors.count %>errors prohibited this post from being saved:
+            </h3>
 
-    <ul>
-    <% @comment.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-    </ul>
-    <% end %>
-    <%= f.text_area :comment, rows:'5',  placeholder: "Write down your comment!" %>
-    <%= f.submit "Send", class: "btn btn-lg btn-base-1 mt-20" %>
-<% end %>
+            <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+            </ul>
+            <% end %>
+            <%= f.text_area :comment, rows:'5', class:"form" %><br>
+            <%= f.submit "コメントする", class: "btn-sm btn-success" %>
+            <% end %>
+    </div>
+    <div class="col-xs-3">
+    </div>
+</div>
+</div>
+</div>
+

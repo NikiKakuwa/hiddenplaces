@@ -73,3 +73,34 @@ a:hover {
   text-align: left;
   border: dotted;
 }
+
+//post
+
+.post {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  background-color: #537a6b;
+}
+
+.post-image {
+  width: 500px;
+  height: auto;
+}
+.comment {
+  width: 90%;
+  border: dotted;
+}
+
+.comment-mini {
+  margin: 10px;
+}
+
+td {
+  padding: 5px;
+}
+
+.form {
+  background-color: #537a6b;
+  width: 300px;
+}
