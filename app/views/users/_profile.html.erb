@@ -1,21 +1,18 @@
-<%= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
 
-<table class="table">
-		<tr></tr>
+<div class="profile">
 
-		<tr>
-			<th></th>
-			<th><%= @user.name %></th>
-		</tr>
+<div class="user-image">
+	<%= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+</div>
 
-		<tr>
-			<th>自己紹介</th>
-			<th><%= @user.introduction %></th>
-		</tr>
-</table>
+<span class="name"><%= @user.name %></span>
 
-<div class="row">
+<div class="introduction"><%= @user.introduction %></div>
+
 	<% if @user.id == current_user.id %>
-        <%= link_to "編集", edit_user_path(@user) %>
+    <span class="edit">
+	    <%= link_to "編集", edit_user_path(@user) %>
+		</span>
 	<% end %>
+
 </div>
