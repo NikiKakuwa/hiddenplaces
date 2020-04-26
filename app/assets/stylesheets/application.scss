@@ -45,6 +45,12 @@ a:hover {
   text-decoration: underline dotted;
 }
 
+.nvbcustom {
+  background-color: lightgoldenrodyellow;
+  height: 65px;
+  color: lightgoldenrodyellow;
+}
+
 //プロフィール
 
 .profile {
@@ -56,6 +62,11 @@ a:hover {
 
 .user-image {
   margin-bottom: 20px;
+}
+
+.user-profile-image {
+  width: 100px;
+  height: 100px;
 }
 
 .name {
@@ -103,4 +114,38 @@ td {
 .form {
   background-color: #537a6b;
   width: 300px;
+}
+
+//new,edit
+
+.post-form {
+  width: 600px;
+  margin: 20px;
+}
+
+//top,about
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+.inner {
+  width: 80%;
+  max-width: 600px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.about_img {
+  text-align: center;
+  width: 500px;
+  height: auto;
+}
+
+.top_background {
+  background-image: image-url("/assets/map_pin_shadow.png");
+  background-position: right bottom;
+  background-size: 30% auto;
+  background-repeat: no-repeat;
 }

@@ -1,29 +1,23 @@
 
-<h2>profile</h2>
+<div class="container">
+<div class="row">
 
-<%= render 'users/profile', user: @user %>
-
-<br><br><br>
-
-<h2>Users</h2>
-<table class="table table-hover table-inverse">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
+    	<div class="col-xs-3">
+    		<%= render 'users/profile', user: @user %>
+    	</div>
+		<div class="col-xs-6">
 		<% @user.posts.each do |post| %>
-		<tr>
-			<td><%= link_to user_path(@user) do %>
-                <% attachment_image_tag post.user, :user_image, fallback: "no_image.jpg", size:'40x40' %>
-                <% end %>
-                <%= link_to @user.name, user_path(post.user) %>
-				<%= attachment_image_tag post, :post_image,  fallback: "no_image.jpg", size:'150x150' %>
-			    <%= link_to post.title, post_path(post) %>
-			    <%= post.body  %>
-			    <%#= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
+			<div class="post">
+				<%= link_to user_path(post.user) do %>
+                <%= attachment_image_tag post.user, :user_image, fallback: "no_image.jpg", size:'50x50' %>
+            	<% end %>
+                <%= link_to post.user.name, user_path(post.user) %>
+				<div>
+                <%= attachment_image_tag post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
+				</div>
+			    <h3><%= link_to post.title, post_path(post) %></h3>
+			    <%= post.body  %><br><br>
+			    <%= link_to "#{post.comments.count} コメント", post_path(post.id) %>
 			<%# <% if post.favorited_by?(current_user)  %>
                 <%# <%= link_to post_favorites_path(post), method: :delete do %>
                 <%# <i class="fa fas-heart" aria-hidden="true" style="color: red;"></i> %>
@@ -36,8 +30,11 @@
                 <%# <% end %>
             <%# <% end %>
 			<%# <h6><%= post.favorites.count %>
-			</td>
-		</tr>
+		</div>
 		<% end %>
-	</tbody>
-</table>
+		<div class="col-xs-3">
+		</div>
+	</div>
+</div>
+</div>
+

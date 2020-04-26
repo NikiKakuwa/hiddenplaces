@@ -1,4 +1,5 @@
 
+<div class="post post-form">
 <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
     <h3>
@@ -13,14 +14,15 @@
     <% end %>
 
     <h4>タイトル</h4>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class:"form" %>
 
     <h4>本文</h4>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class:"form" %>
 
     <h4>写真</h4>
     <%= f.attachment_field :post_image %>
-
-    <%= f.submit '投稿' %>
+    <br>
+    <%= f.submit '投稿', class: "btn-sm btn-success" %>
 
 <% end %>
+</div>

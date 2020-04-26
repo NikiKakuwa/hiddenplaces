@@ -11,7 +11,7 @@
 
   <body>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default nvbcustom">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
@@ -20,7 +20,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand">メニュー</a>
+			<a class="navbar-brand"><img src="/assets/hiddenplacesLogo2.png" class="logo"></a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbarEexample1">
@@ -36,7 +36,7 @@
           <%= link_to "新規投稿", posts_new_path %>
         </li>
 				<li>
-          <%= link_to "ユーザー", users_path %>
+          <%= link_to "ユーザー一覧", users_path %>
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -46,7 +46,7 @@
             <%= link_to "ホーム", root_path %>
         </li>
           <li>
-        <%= link_to "About", users_about_path %>
+        <%= link_to "About", posts_about_path %>
         </li>
         <li>
           <%= link_to "新規登録", new_user_registration_path %>

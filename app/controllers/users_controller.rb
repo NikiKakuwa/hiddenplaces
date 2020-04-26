@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 
-  def top
-  end
-
-  def about
-  end
+  before_action :authenticate_user!
 
   def index
     @user = current_user
@@ -13,7 +9,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post
   end
 
   def edit

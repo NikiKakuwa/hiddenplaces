@@ -41,7 +41,7 @@
                 <div class="comment-mini">
                     <table><tr></tr><tr></tr>
                     <td>
-                    <%= attachment_image_tag @post.user, :user_image, fallback: "no_image.jpg", size:'30x30' %><br>
+                    <%= attachment_image_tag comment.user, :user_image, fallback: "no_image.jpg", size:'30x30' %><br>
                     <%= comment.user.name %>
                     </td>
                     <td>
