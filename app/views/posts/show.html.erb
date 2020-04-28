@@ -25,9 +25,9 @@
             <p class="post_info">
 			    	コメント<%= @post.comments.count %>
 			    	<% if @post.favorited_by?(current_user)  %>
-                		<%= link_to "♥", post_favorites_path(@post), method: :delete, class:"heart" %>
+                		<%= link_to "♥", post_favorites_path(@post), method: :delete, id:"heart" %>
             		<% else %>
-                		<%= link_to "♡", post_favorites_path(@post), method: :post, class:"heart" %>
+                		<%= link_to "♡", post_favorites_path(@post), method: :post, id:"heart2" %>
             		<% end %>
 					<%= @post.favorites.count %>
 					<%= @post.created_at.strftime('%Y/%m/%d') %>
