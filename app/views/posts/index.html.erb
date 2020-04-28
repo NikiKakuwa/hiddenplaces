@@ -12,25 +12,22 @@
                 <%= attachment_image_tag post.user, :user_image, fallback: "no_image.jpg", size:'50x50' %>
             	<% end %>
                 <%= link_to post.user.name, user_path(post.user) %>
-				<div>
-                <%= attachment_image_tag post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
-				</div>
+					<div>
+                		<%= attachment_image_tag post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
+					</div>
 			    <h3><%= link_to post.title, post_path(post) %></h3>
 			    <%= post.body  %><br><br>
-			    <%= link_to "#{post.comments.count} コメント", post_path(post.id) %>
-			<%# <% if post.favorited_by?(current_user)  %>
-                <%# <%= link_to post_favorites_path(post), method: :delete do %>
-                <%# <i class="fa fas-heart" aria-hidden="true" style="color: red;"></i> %>
-                <%# <%= fa_icon "heart", :style=>"color:red;" %>
-                <%# <% end %>
-            <%# <% else %>
-                <%# <%= link_to post_favorites_path(post), method: :post do %>
-                <%# <i class="fa far-heart></i> %>
-                <%# <%= fa_icon "heart-o", :style=>"color:red;" %>
-                <%# <% end %>
-            <%# <% end %>
-			<%# <h6><%= post.favorites.count %>
-		</div>
+				<p class="post_info">
+			    	<%= link_to "コメント#{post.comments.count}", post_path(post.id) %>
+			    	<% if post.favorited_by?(current_user)  %>
+                		<%= link_to "♥", post_favorites_path(post), method: :delete, class:"heart" %>
+            		<% else %>
+                		<%= link_to "♡", post_favorites_path(post), method: :post, class:"heart" %>
+            		<% end %>
+					<%= post.favorites.count %>
+					<%= post.created_at.strftime('%Y/%m/%d') %>
+				</p>
+			</div>
 		<% end %>
 		<div class="col-xs-3">
 		</div>

@@ -7,33 +7,31 @@
     </div>
 <div class="col-xs-6">
 
-    <div class="post">
+        <div class="post">
             <%= link_to user_path(@post.user.id) do %>
-            <%= attachment_image_tag @post.user, :user_image, fallback: "no_image.jpg", size:'50x50' %>
+                <%= attachment_image_tag @post.user, :user_image, fallback: "no_image.jpg", size:'50x50' %>
             <% end %>
             <%= link_to @post.user.name, user_path(@post.user) %>
             <div>
-            <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
+                <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
             </div>
             <br>
             <h3><%= link_to @post.title, post_path(@post) %></h3><br>
             <%= @post.body %><br><br>
             <% if @post.user_id == current_user.id %>
-            <%= link_to "編集", edit_post_path(@post), class: "btn-sm btn-success" %>
-            <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' },class: "btn-sm btn-danger" %>
-            <% end %>
-            <%# <% if @post.favorited_by?(current_user) %>
-                <%# <%= link_to book_favorites_path(@post), method: :delete do %>
-                <%# <i class="fa fas-heart" aria-hidden="true" style="color: red;"></i> %>
-                <%# <%= fa_icon "heart", :style=>"color:red;" %>
-                <%# <% end %>
-            <%# <% else %>
-                <%# <%= link_to book_favorites_path(@post), method: :post do %>
-                <%# <i class="fa far-heart></i> %>
-                <%# <%= fa_icon "heart-o", :style=>"color:red;" %>
-                <%# <% end %>
-            <%# <% end %>
-             <%# <h6><%= @post.favorites.count %>
+                <%= link_to "編集", edit_post_path(@post), class: "btn-sm btn-success" %>
+                <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' },class: "btn-sm btn-danger" %>
+            <% end %><br>
+            <p class="post_info">
+			    	コメント<%= @post.comments.count %>
+			    	<% if @post.favorited_by?(current_user)  %>
+                		<%= link_to "♥", post_favorites_path(@post), method: :delete, class:"heart" %>
+            		<% else %>
+                		<%= link_to "♡", post_favorites_path(@post), method: :post, class:"heart" %>
+            		<% end %>
+					<%= @post.favorites.count %>
+					<%= @post.created_at.strftime('%Y/%m/%d') %>
+				</p>
 
             <br><br>
             <div class="comment">
@@ -41,14 +39,17 @@
                 <div class="comment-mini">
                     <table><tr></tr><tr></tr>
                     <td>
-                    <%= attachment_image_tag comment.user, :user_image, fallback: "no_image.jpg", size:'30x30' %><br>
-                    <%= comment.user.name %>
+                        <%= attachment_image_tag comment.user, :user_image, fallback: "no_image.jpg", size:'30x30' %><br>
+                        <%= comment.user.name %>
                     </td>
-                    <td>
-                    <%= comment.comment %>
-                    <% if current_user.id == comment.user_id %>
-                    <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-sm btn-danger"%>
-                    <% end %>
+                    <td class="comment-width">
+                        <%= comment.comment %>
+                        <% if current_user.id == comment.user_id %>
+                    <p class="post_info">
+                        <%= comment.created_at.strftime('%Y/%m/%d') %>
+                        <%= link_to "削除", post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-sm btn-danger"%>
+                    </p>
+                <% end %>
                     </td>
                     </table>
                 </div>
@@ -71,9 +72,9 @@
             <%= f.text_area :comment, rows:'5', class:"form" %><br>
             <%= f.submit "コメントする", class: "btn-sm btn-success" %>
             <% end %>
-    </div>
-    <div class="col-xs-3">
-    </div>
+        </div>
+        <div class="col-xs-3">
+        </div>
 </div>
 </div>
 </div>

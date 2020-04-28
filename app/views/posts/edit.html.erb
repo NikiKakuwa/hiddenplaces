@@ -20,7 +20,7 @@
     <%= f.text_area :body, class:"form" %>
 
     <h4>写真</h4>
-    <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", class:"user-profile-image" %>
+    <%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", class:"post-image" %>
     <%= f.attachment_field :post_image %>
     <br>
     <%= f.submit '編集', class:"btn-sm btn-success" %>
