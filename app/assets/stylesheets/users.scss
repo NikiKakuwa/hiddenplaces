@@ -2,3 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//プロフィール
+
+.profile {
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #537a6b;
+  margin-bottom: 20px;
+}
+
+.user-image-div {
+  margin-bottom: 20px;
+}
+
+.user-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 25px;
+  padding: 15px;
+  font-weight: bold;
+  margin: auto;
+}
+
+.introduction {
+  margin: 20px 20px;
+  padding: 10px 10px;
+  width: 80%;
+  height: auto;
+  font-size: 15px;
+  text-align: left;
+  border: dotted;
+}
